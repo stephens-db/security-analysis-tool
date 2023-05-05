@@ -45,7 +45,10 @@ class WSSettingsClient(SatDBClient):
             {"name": "enableFileStoreEndpoint", "defn":"Enable or disable FileStore endpoint /files"},
             {"name": "jobsListBackendPaginationEnabled", "defn":"Enables 10,000 jobs per workspace and streamlined search"},
             {"name": "maxTokenLifetimeDays", "defn":"Gets the global max token lifetime days"},
-            {"name": "enableDeprecatedGlobalInitScripts", "defn":"Enable Deprecated Global Scripts"}            
+            {"name": "enableDeprecatedGlobalInitScripts", "defn":"Enable Deprecated Global Scripts"},
+            {"name": "enableDeprecatedClusterNamedInitScripts", "defn":"Enable legacy cluster-named init Scripts"}       
+
+            
             ]
         # pylint: enable=line-too-long
 

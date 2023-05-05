@@ -2,6 +2,7 @@
 from core.dbclient import SatDBClient
 from core.logging_utils import LoggingUtils
 import json
+import sys
 
 LOGGR=None
 
@@ -172,4 +173,12 @@ class UnityCatalogClient(SatDBClient):
         jsonarr = json.dumps(arrperms)
         return arrperms
 
+    def get_workspace_bindings(self):
+        """
+        Returns workspace to catalogs binding for UC. 
+        """
+        # fetch all schemaslist    
+        catslist=[]
+        catslist = self.get("/unity-catalog/workspace-bindings/catalogs", version='2.1').get('catalogs', [])
+        return catslist   
             

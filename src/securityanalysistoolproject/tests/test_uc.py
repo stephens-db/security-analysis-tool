@@ -130,3 +130,13 @@ def test_grants_effective_permissions_ext(get_db_client):
     sList = catalogslist.get_grants_effective_permissions_ext()
     print('--------------------')
     print(sList) 
+
+
+def test_get_workspace_bindings(get_db_client):
+    LOGGR = LoggingUtils.get_logger()
+    jsonstr = get_db_client 
+    catalogslist = UnityCatalogClient(jsonstr)
+    #guid of metastore
+    sList = catalogslist.get_workspace_bindings()
+    print('--------------------')
+    print(sList) 
