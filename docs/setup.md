@@ -100,7 +100,7 @@ Please gather the following information before you start setting up:
 
      You should see a listing of folders in your workspace : 
       ```
-           databricks --profile e2-sat workspace ls
+           databricks --profile e2-sat workspace list /
       ```
 
      <img src="./images/workspace_ls.png" width="50%" height="50%">
@@ -111,7 +111,7 @@ Please gather the following information before you start setting up:
      Note: The values you place below are case sensitive and need to be exact. 
  
      ```
-      databricks --profile e2-sat  secrets create-scope --scope sat_scope
+      databricks --profile e2-sat secrets create-scope sat_scope
       ```
 
      For more details refer [here](https://docs.databricks.com/dev-tools/cli/secrets-cli.html) 
@@ -130,13 +130,13 @@ Please gather the following information before you start setting up:
 
        *  Input your Databricks account console admin username to store it in a the secret store
            ```
-           databricks --profile e2-sat secrets put --scope sat_scope --key user
+           databricks --profile e2-sat secrets put-secret sat_scope user
            ```
 
        *  Input your Databricks account console admin account password to store it in a the secret store
 
            ```
-           databricks --profile e2-sat secrets put --scope sat_scope --key pass
+           databricks --profile e2-sat secrets put-secret sat_scope pass
            ```    
        
        **Authenticate using a Service Principal**
@@ -146,19 +146,19 @@ Please gather the following information before you start setting up:
        1. Set the use_sp_auth to `true` in order to use the Service Principal Authentication Flow
 
            ```
-           databricks --profile e2-sat secrets put --scope sat_scope --key use-sp-auth --string-value true
+           databricks --profile e2-sat secrets put-secret sat_scope use-sp-auth --string-value true
            ```
        
        2. Store your Databricks Service Principal Client ID in the secret store:
 
            ```
-           databricks --profile e2-sat secrets put --scope sat_scope --key client-id --string-value <client_id>
+           databricks --profile e2-sat secrets put-secret sat_scope client-id --string-value <client_id>
            ```
 
        3. Store your Databricks Service Principal Secret in the secret store:
 
            ```
-           databricks --profile e2-sat secrets put --scope sat_scope --key client-secret  --string-value <client_secret>
+           databricks --profile e2-sat secrets put-secret sat_scope client-secret  --string-value <client_secret>
            ```
       </details>
 
@@ -206,15 +206,15 @@ Please gather the following information before you start setting up:
     
 
        ```
-       databricks --profile e2-sat secrets put --scope sat_scope --key sat-token-<workspace_id> 
+       databricks --profile e2-sat secrets put-secret sat_scope sat-token-<workspace_id> 
        ``` 
   
        ```
-       databricks --profile e2-sat secrets put --scope sat_scope --key account-console-id
+       databricks --profile e2-sat secrets put-secret sat_scope account-console-id
        ```  
         
        ```
-       databricks --profile e2-sat secrets put --scope sat_scope --key sql-warehouse-id
+       databricks --profile e2-sat secrets put-secret sat_scope sql-warehouse-id
        ```  
     
 
@@ -251,24 +251,24 @@ Please gather the following information before you start setting up:
           * Setup the Subscription ID in a secret as subscription-id
   
              ```
-               databricks --profile e2-sat secrets put --scope sat_scope --key subscription-id
+               databricks --profile e2-sat secrets put-secret sat_scope subscription-id
              ``` 
   
           * Set the Directory (tenant) ID as tenant-id 
   
              ```
-               databricks --profile e2-sat secrets put --scope sat_scope --key tenant-id
+               databricks --profile e2-sat secrets put-secret sat_scope tenant-id
              ``` 
   
           * Setup the Application (client) ID as client-id 
     
              ```
-               databricks --profile e2-sat secrets put --scope sat_scope --key client-id
+               databricks --profile e2-sat secrets put-secret sat_scope client-id
              ``` 
   
           * Setup the Client secret in a secret 
              ```
-               databricks --profile e2-sat secrets put --scope sat_scope --key client-secret
+               databricks --profile e2-sat secrets put-secret sat_scope client-secret
              ``` 
       
          * Your config in  \<SATProject\>/notebooks/Utils/initialize CMD 7 should look like this if you are using the secrets (Required for TF deployments), no need to edit the cell:
